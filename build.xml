@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="clean" basedir="." name="example-extension">
+  <description>
+    Build Example Extension 
+  </description>
+
+
+  <buildnumber file="build.number"/>
+  <property file="build.properties"/>
+  <property name="build" location="build"/>
+  <property name="dist" location="dist"/>
+
+  <target name="init">
+    <tstamp>
+     <format property="NOW" pattern="yyyy-MM-dd HH:mm:ss" />
+    </tstamp>
+    <delete dir="${dist}"/>
+  </target>
+
+
+  <target name="createManifest" depends="init" description="copy source file to temp" >
+    
+<echo file="${dist}/extension/META-INF/MANIFEST.MF">Manifest-Version: 1.0
+Built-Date: ${NOW}
+version: "${bundleversion}${build.number}"
+id: "${id}"
+name: "${label}"
+description: "${description}"
+start-bundles: false
+trial: false
+lucee-core-version: "5.0.0.050"
+mapping: "[{'virtual':'${virtual}','physical':'${physical}','archive':'${archive}','primary':'${primary}','inspect':'${inspect}','toplevel':'${toplevel}','readonly':'${readonly}','listenermode':'${listenermode}','listenertype':'${listenertype}'}]"
+</echo>
+
+
+  </target>
+  
+
+  <target name="build" depends="createManifest"
+        description="generate the distribution" >
+ 
+    <!-- copy the logo -->
+    <copy todir="${dist}/extension/META-INF">
+      <fileset dir="${build}/images">
+        <include name="logo.png"/>
+      </fileset>
+    </copy>
+
+    <!-- Zip everything  -->
+     <zip destfile="${dist}/${bundlename}-${bundleversion}${build.number}.lex">
+        <zipfileset dir="${dist}/extension"/>
+    </zip>
+    
+  </target>
+
+  <target name="clean" depends="build" description="clean temp stuff" >
+    <delete dir="${dist}/extension"/>
+  </target>
+
+</project>
