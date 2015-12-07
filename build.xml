@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="clean" basedir="." name="example-extension">
+<project default="clean" basedir="." name="doc-extension">
   <description>
-    Build Example Extension 
+    Build Doc Extension 
   </description>
 
 
