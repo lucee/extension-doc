@@ -29,7 +29,7 @@ description: "${description}"
 start-bundles: false
 trial: false
 lucee-core-version: "5.0.0.050"
-mapping: "[{'virtual':'${virtual}','physical':'${physical}','archive':'${archive}','primary':'${primary}','inspect':'${inspect}','toplevel':'${toplevel}','readonly':'${readonly}','listenermode':'${listenermode}','listenertype':'${listenertype}'}]"
+mapping: "[{'virtual':'${virtual}','physical':'${physical}','archive':'${archive}','primary':'${primary}','inspect':'${inspect}','toplevel':'${toplevel}','readonly':'${readonly}','listener-mode':'${listener-mode}','listener-type':'${listener-type}'}]"
 </echo>
 
 
